@@ -1,17 +1,65 @@
 package calc;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import javafx.scene.text.Text;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+        
+public class UIController
+{
 
-public class UIController implements Initializable {
-
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+      @FXML
+      private Text output;
+      private Calc calc = new Calc();
+      
+      private boolean start = true; 
+      
+      private long num1 = 0;
+      
+      private String operator = "";
+      
+      @FXML
+      private void Numpad(ActionEvent event)
+      {
+          if (start)
+          {
+              output.setText("");
+              start = false;
+          }
+          String value = ((Button)event.getSource()).getText();
+          output.setText(output.getText() + value);
+          
+      }
+      
+      @FXML
+      
+      private void Operators(ActionEvent event)
+      {
+          
+          String value = ((Button)event.getSource()).getText();
+          
+          
+          if (!"=".equals(value))
+          {
+              if (!operator.isEmpty())
+                  return;
+              operator = value;
+              num1 = Long.parseLong(output.getText());
+              output.setText("");
+              
+          }
+          else
+          {
+              
+              if (operator.isEmpty())
+                  return;
+              
+              output.setText(String.valueOf(calc.calculate(num1, Long.parseLong(output.getText()), operator)));
+              
+              operator = "";
+              
+          }
+          
+      }
     
 }
