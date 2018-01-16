@@ -2,18 +2,59 @@
 
 <!-- Import all necessary libraries-->
 
-<?import java.lang.*?>
+<?import java.net.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.beans.property.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:controller="calc.UIController" xmlns:fx="http://javafx.com/fxml/1">
+<!--Aligning the main vertical box 
+in order to fit in the numbers and operators-->
+
+<VBox alignment = "CENTER" spacing = "10" fx:controller="calc.UIController" xmlns:fx="http://javafx.com/fxml/1">
+    
+    <fx:define>
+        <Font fx:id = "FONT" size = "18" />
+    </fx:define>
+    
+    <StackPane alignment = "CENTER">
+        <Rectangle fill = "TRANSPARENT" stroke = "GRAY" width = "230" height = "50" />
+        <Text  fx:id= "output" font = "$FONT"/>
         
-    </
+    </StackPane>
+    
+    <HBox alignment = "CENTER" spacing = "10">
+        <Button text = "7" prefWidth = "50" font = "$FONT" onAction = "#Numpad"/>
+        <Button text = "8" prefWidth = "50" font = "$FONT" onAction = "#Numpad"/>
+        <Button text = "9" prefWidth = "50" font = "$FONT" onAction = "#Numpad"/>
+        <Button text = "/" prefWidth = "50" font = "$FONT" onAction = "#Operators"/>
+    </HBox>
+    
+    <HBox alignment = "CENTER" spacing = "10">
+        <Button text = "4" prefWidth = "50" font = "$FONT" onAction = "#Numpad"/>
+        <Button text = "5" prefWidth = "50" font = "$FONT" onAction = "#Numpad"/>
+        <Button text = "6" prefWidth = "50" font = "$FONT" onAction = "#Numpad"/>
+        <Button text = "*" prefWidth = "50" font = "$FONT" onAction = "#Operators"/>
+    </HBox>
+    
+    <HBox spacing = "10" alignment = "CENTER">
+        <Button text = "1" prefWidth = "50" font = "$FONT" onAction = "#Numpad"/>
+        <Button text = "2" prefWidth = "50" font = "$FONT" onAction = "#Numpad"/>
+        <Button text = "3" prefWidth = "50" font = "$FONT" onAction = "#Numpad"/>
+        <Button text = "-" prefWidth = "50" font = "$FONT" onAction = "#Operators"/>
+    </HBox>
+    
+    <HBox spacing = "10" alignment = "CENTER">
+        <Button text = "0" prefWidth = "110" font = "$FONT" onAction = "#Numpad"/>
+        <Button text = "=" prefWidth = "50" font = "$FONT" onAction = "#Operators"/>
+        <Button text = "+" prefWidth = "50" font = "$FONT" onAction = "#Operators"/>
+    </HBox>
 
 </VBox>
 
